@@ -1,0 +1,156 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  Amazon Linux 2023/2027 EC2 Instance Stack.
+  Deploys with gp3 EBS, IMDSv2, and dynamic AMI resolution via SSM.
+
+# ─── Parameters ───────────────────────────────────────────
+
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: SSH key pair name for EC2 access
+
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      - t3.micro
+      - t3.small
+      - t3.medium
+      - t3.large
+      - c6g.medium
+      - c6g.large
+      - m6g.medium
+      - m6g.large
+    Description: EC2 instance type
+
+  Architecture:
+    Type: String
+    Default: x86_64
+    AllowedValues:
+      - x86_64
+      - arm64
+    Description: CPU architecture
+
+  AMIType:
+    Type: String
+    Default: standard
+    AllowedValues:
+      - standard
+      - minimal
+    Description: AMI variant (standard or minimal)
+
+  VolumeSize:
+    Type: Number
+    Default: 30
+    MinValue: 8
+    MaxValue: 500
+    Description: Root volume size in GB
+
+  SSHCidr:
+    Type: String
+    Default: 0.0.0.0/0
+    Description: CIDR block for SSH access
+    AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
+
+# ─── Conditions ───────────────────────────────────────────
+
+Conditions:
+  IsMinimal: !Equals [!Ref AMIType, 'minimal']
+
+# ─── Mappings ─────────────────────────────────────────────
+
+Mappings:
+  AMIAliasMap:
+    x86_64:
+      standard: al2023-ami-kernel-default-x86_64
+      minimal: al2023-ami-minimal-kernel-default-x86_64
+    arm64:
+      standard: al2023-ami-kernel-default-arm64
+      minimal: al2023-ami-minimal-kernel-default-arm64
+
+# ─── Resources ────────────────────────────────────────────
+
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Sub 'AL2023 ${AMIType} instance security group'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref SSHCidr
+          Description: SSH access
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: HTTP
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          Description: HTTPS
+      Tags:
+        - Key: Name
+          Value: AL2023-SG
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Sub
+        - '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/${AMIAlias}}}'
+        - AMIAlias: !FindInMap [AMIAliasMap, !Ref Architecture, !Ref AMIType]
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !Ref SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp3
+            VolumeSize: !Ref VolumeSize
+            Encrypted: true
+            DeleteOnTermination: true
+      MetadataOptions:
+        HttpEndpoint: enabled
+        HttpTokens: required
+        HttpPutResponseHopLimit: 2
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          echo "AL2023 CloudFormation instance initialized at $(date)" > /var/log/cfn-init.log
+          dnf install -y htop tree jq aws-cli-2 2>/dev/null || true
+      Tags:
+        - Key: Name
+          Value: !Sub 'AL2023-${AMIType}-${Architecture}'
+        - Key: OS
+          Value: Amazon Linux 2023
+        - Key: ManagedBy
+          Value: CloudFormation
+
+# ─── Outputs ──────────────────────────────────────────────
+
+Outputs:
+  InstanceId:
+    Description: EC2 Instance ID
+    Value: !Ref EC2Instance
+
+  PublicIP:
+    Description: Public IP address
+    Value: !GetAtt EC2Instance.PublicIp
+
+  SSHCommand:
+    Description: SSH connection command
+    Value: !Sub 'ssh ec2-user@${EC2Instance.PublicIp}'
+
+  AMIAlias:
+    Description: SSM parameter alias used for AMI lookup
+    Value: !FindInMap [AMIAliasMap, !Ref Architecture, !Ref AMIType]
+
+  SecurityGroupId:
+    Description: Security Group ID
+    Value: !Ref SecurityGroup

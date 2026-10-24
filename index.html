@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive Amazon Linux reference dashboard covering AL2023, AL2027, kernel updates, AMI management, IaC templates, and operational scripts.">
+    <title>Amazon Linux Reference Hub | AL2023 &amp; AL2027 Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+    <div class="bg-gradient-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span>Amazon Linux <span class="logo-accent">Hub</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#overview" class="nav-link active">Overview</a>
+                <a href="#versions" class="nav-link">Versions</a>
+                <a href="#kernel" class="nav-link">Kernel</a>
+                <a href="#migration" class="nav-link">Migration</a>
+                <a href="#iac" class="nav-link">IaC</a>
+                <a href="#scripts" class="nav-link">Scripts</a>
+                <a href="#cheatsheet" class="nav-link">Cheat Sheet</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="overview">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>10B+ Docker Downloads • Production Ready</span>
+            </div>
+            <h1 class="hero-title">
+                Amazon Linux<br>
+                <span class="gradient-text">Reference Hub</span>
+            </h1>
+            <p class="hero-subtitle">
+                Your comprehensive guide to Amazon Linux 2023 &amp; 2027 — covering kernel management, 
+                AMI operations, migration paths, Infrastructure as Code, and operational scripts.
+            </p>
+            <div class="hero-actions">
+                <a href="#versions" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Explore Versions
+                </a>
+                <a href="#cheatsheet" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Quick Reference
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span><span class="stat-suffix">B+</span>
+                    <span class="stat-label">Docker Pulls</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-label">Versions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span><span class="stat-suffix">yr</span>
+                    <span class="stat-label">LTS Support</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2">0</span>
+                    <span class="stat-label">Architectures</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Version Cards Section -->
+    <section class="section" id="versions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Versions</span>
+                <h2 class="section-title">Amazon Linux Distributions</h2>
+                <p class="section-desc">Choose the right version for your workload. AL2023 is recommended for production.</p>
+            </div>
+
+            <div class="version-grid">
+                <!-- AL2027 -->
+                <div class="version-card version-preview">
+                    <div class="version-badge badge-preview">Preview</div>
+                    <div class="version-header">
+                        <div class="version-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
+                        </div>
+                        <h3>Amazon Linux 2027</h3>
+                        <p class="version-tag-line">Next-generation • Evaluation Only</p>
+                    </div>
+                    <div class="version-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value status-preview">Preview</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Arch</span>
+                            <span class="detail-value">amd64, arm64v8</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Docker Tag</span>
+                            <code class="detail-code">2027-minimal</code>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Auto-Updates</span>
+                            <span class="detail-value status-warning">Disabled by default</span>
+                        </div>
+                    </div>
+                    <div class="version-links">
+                        <a href="https://aws.amazon.com/linux/amazon-linux-2027/" target="_blank" class="version-link">Product Page ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2027/ug/what-is-amazon-linux-2027.html" target="_blank" class="version-link">User Guide ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2027/release-notes/relnotes.html" target="_blank" class="version-link">Release Notes ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2027/ug/compare-with-al2023.html" target="_blank" class="version-link">vs AL2023 ↗</a>
+                    </div>
+                </div>
+
+                <!-- AL2023 -->
+                <div class="version-card version-recommended">
+                    <div class="version-badge badge-recommended">★ Recommended</div>
+                    <div class="version-header">
+                        <div class="version-icon icon-recommended">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Amazon Linux 2023</h3>
+                        <p class="version-tag-line">Production Ready • Latest Stable</p>
+                    </div>
+                    <div class="version-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value status-ga">GA (Latest)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Support</span>
+                            <span class="detail-value">5 years LTS (until 2028)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Docker Tags</span>
+                            <code class="detail-code">2023, latest</code>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Pkg Manager</span>
+                            <span class="detail-value">DNF (yum symlinked)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Kernel</span>
+                            <span class="detail-value">6.1 LTS from kernel.org</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">EBS Volume</span>
+                            <span class="detail-value">gp3 (default)</span>
+                        </div>
+                    </div>
+                    <div class="version-links">
+                        <a href="https://aws.amazon.com/linux/amazon-linux-2023/" target="_blank" class="version-link">Product Page ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/what-is-amazon-linux.html" target="_blank" class="version-link">User Guide ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes.html" target="_blank" class="version-link">Release Notes ↗</a>
+                        <a href="https://alas.aws.amazon.com/alas2023.html" target="_blank" class="version-link">Security Advisories ↗</a>
+                    </div>
+                </div>
+
+                <!-- AL2 -->
+                <div class="version-card version-eol-soon">
+                    <div class="version-badge badge-eol">EOL Jun 2026</div>
+                    <div class="version-header">
+                        <div class="version-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h3>Amazon Linux 2</h3>
+                        <p class="version-tag-line">Legacy • Plan Migration</p>
+                    </div>
+                    <div class="version-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value status-eol">EOL June 30, 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Docker Tag</span>
+                            <code class="detail-code">2</code>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Pkg Manager</span>
+                            <span class="detail-value">YUM</span>
+                        </div>
+                    </div>
+                    <div class="version-links">
+                        <a href="https://aws.amazon.com/amazon-linux-2/" target="_blank" class="version-link">Product Page ↗</a>
+                        <a href="https://alas.aws.amazon.com/alas2.html" target="_blank" class="version-link">Security Advisories ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/compare-with-al2.html" target="_blank" class="version-link">Migration Guide ↗</a>
+                    </div>
+                </div>
+
+                <!-- AL1 -->
+                <div class="version-card version-eol">
+                    <div class="version-badge badge-eol-past">EOL Jan 2024</div>
+                    <div class="version-header">
+                        <div class="version-icon icon-deprecated">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                        </div>
+                        <h3>Amazon Linux AMI (1)</h3>
+                        <p class="version-tag-line">Deprecated • No Updates</p>
+                    </div>
+                    <div class="version-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value status-eol-past">End of Life</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Docker Tags</span>
+                            <code class="detail-code">2018.03, 1</code>
+                        </div>
+                    </div>
+                    <div class="version-links">
+                        <a href="https://aws.amazon.com/amazon-linux-ami/" target="_blank" class="version-link">Product Page ↗</a>
+                        <a href="https://alas.aws.amazon.com/" target="_blank" class="version-link">Security Advisories ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kernel Management Section -->
+    <section class="section section-alt" id="kernel">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Kernel</span>
+                <h2 class="section-title">Kernel &amp; Package Management</h2>
+                <p class="section-desc">AL2023 uses deterministic updates through versioned repositories for fleet consistency.</p>
+            </div>
+
+            <div class="kernel-grid">
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <h3>Check for Updates</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="dnf check-release-update">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># List available updated repositories</span>
+<span class="code-prompt">$</span> dnf check-release-update
+
+<span class="code-comment"># Check available package updates for a specific release</span>
+<span class="code-prompt">$</span> dnf check-update --releasever=2023.0.20230308</code></pre>
+                    </div>
+                </div>
+
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                        <h3>Update Packages</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="sudo dnf upgrade --releasever=2023.0.20230308">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># Full distribution upgrade to a specific version</span>
+<span class="code-prompt">$</span> sudo dnf upgrade --releasever=2023.0.20230308
+
+<span class="code-comment"># Update a specific package</span>
+<span class="code-prompt">$</span> sudo dnf update &lt;package_name&gt;
+
+<span class="code-comment"># Default behavior: NO updates (locked to AMI version)</span>
+<span class="code-prompt">$</span> sudo dnf update
+<span class="code-output">Nothing to do. Complete!</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        <h3>Package Management (DNF)</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="dnf list installed">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># Search for packages</span>
+<span class="code-prompt">$</span> dnf search httpd
+
+<span class="code-comment"># Install a package</span>
+<span class="code-prompt">$</span> sudo dnf install httpd
+
+<span class="code-comment"># List installed packages</span>
+<span class="code-prompt">$</span> dnf list installed
+
+<span class="code-comment"># Remove a package</span>
+<span class="code-prompt">$</span> sudo dnf remove httpd
+
+<span class="code-comment"># yum still works (it's a symlink to dnf)</span>
+<span class="code-prompt">$</span> which yum
+<span class="code-output">/usr/bin/yum -> dnf-3</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <h3>AMI Lookup via SSM</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="aws ssm get-parameters --region us-east-2 --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># AMI aliases for AL2023:</span>
+<span class="code-comment"># al2023-ami-kernel-default-arm64</span>
+<span class="code-comment"># al2023-ami-minimal-kernel-default-arm64</span>
+<span class="code-comment"># al2023-ami-kernel-default-x86_64</span>
+<span class="code-comment"># al2023-ami-minimal-kernel-default-x86_64</span>
+
+<span class="code-prompt">$</span> aws ssm get-parameters \
+  --region us-east-2 \
+  --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64</code></pre>
+                    </div>
+                </div>
+
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        <h3>Launch EC2 Instance</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code='aws ec2 run-instances --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64 --instance-type c6g.medium --key-name my_key'>Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># Launch with dynamic SSM AMI resolution</span>
+<span class="code-prompt">$</span> aws ec2 run-instances \
+  --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64 \
+  --instance-type c6g.medium \
+  --key-name my_ssh_key</code></pre>
+                    </div>
+                </div>
+
+                <div class="kernel-card">
+                    <div class="kernel-card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <h3>Docker Container</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="docker run --rm -it public.ecr.aws/amazonlinux/amazonlinux:2023 /bin/bash">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># Login to ECR</span>
+<span class="code-prompt">$</span> aws ecr-public get-login-password --region us-east-1 \
+  | docker login --username AWS --password-stdin public.ecr.aws
+
+<span class="code-comment"># Run AL2023 container</span>
+<span class="code-prompt">$</span> docker run --rm -it \
+  public.ecr.aws/amazonlinux/amazonlinux:2023 /bin/bash
+
+<span class="code-comment"># Or from Docker Hub</span>
+<span class="code-prompt">$</span> docker pull amazonlinux:2023</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Migration Section (AL2 vs AL2023) -->
+    <section class="section" id="migration">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Migration</span>
+                <h2 class="section-title">AL2 → AL2023 Key Differences</h2>
+                <p class="section-desc">Critical changes you need to know when migrating from Amazon Linux 2 to AL2023.</p>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Amazon Linux 2</th>
+                            <th>Amazon Linux 2023</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Package Manager</strong></td>
+                            <td>YUM</td>
+                            <td class="highlight-cell">DNF <span class="inline-badge">yum symlinked</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Update Model</strong></td>
+                            <td>Rolling updates</td>
+                            <td class="highlight-cell">Deterministic (version-locked repos)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Networking</strong></td>
+                            <td>ISC dhclient</td>
+                            <td class="highlight-cell">systemd-networkd</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Logging</strong></td>
+                            <td>rsyslog</td>
+                            <td class="highlight-cell">systemd journal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cron</strong></td>
+                            <td>cron/crond</td>
+                            <td class="highlight-cell">systemd timers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Python</strong></td>
+                            <td>Python 2.7</td>
+                            <td class="highlight-cell">Python 3 only</td>
+                        </tr>
+                        <tr>
+                            <td><strong>cgroups</strong></td>
+                            <td>v1</td>
+                            <td class="highlight-cell">v2 (unified hierarchy)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>/tmp</strong></td>
+                            <td>Disk-backed</td>
+                            <td class="highlight-cell">tmpfs (RAM-backed)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EBS Volume</strong></td>
+                            <td>gp2</td>
+                            <td class="highlight-cell">gp3 (20% cheaper)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Boot Mode</strong></td>
+                            <td>Legacy BIOS</td>
+                            <td class="highlight-cell">UEFI Preferred + Secure Boot</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Java</strong></td>
+                            <td>OpenJDK / Corretto</td>
+                            <td class="highlight-cell">Amazon Corretto (default JVM)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWS CLI</strong></td>
+                            <td>v1</td>
+                            <td class="highlight-cell">v2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compiler Triplet</strong></td>
+                            <td>aarch64-<em>redhat</em>-linux-gcc</td>
+                            <td class="highlight-cell">aarch64-<em>amazon</em>-linux-gcc</td>
+                        </tr>
+                        <tr>
+                            <td><strong>32-bit i686</strong></td>
+                            <td>Limited runtime support</td>
+                            <td class="highlight-cell">Not supported</td>
+                        </tr>
+                        <tr>
+                            <td><strong>lsb_release</strong></td>
+                            <td>system-lsb-core</td>
+                            <td class="highlight-cell">/etc/os-release only</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desktop</strong></td>
+                            <td>MATE</td>
+                            <td class="highlight-cell">GNOME (from 2023.7)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SELinux + cloud-init</strong></td>
+                            <td>Not supported together</td>
+                            <td class="highlight-cell">Fully supported</td>
+                        </tr>
+                        <tr>
+                            <td><strong>cloud-init errors</strong></td>
+                            <td>Silent failure</td>
+                            <td class="highlight-cell">Fatal error (fail closed)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="migration-warnings">
+                <div class="warning-card">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <h4>Breaking: cloud-init now fails on unavailable remote resources</h4>
+                        <p>AL2023 treats unavailable remote resources as fatal errors. Review all cloud-init configurations before migrating.</p>
+                    </div>
+                </div>
+                <div class="warning-card">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <h4>No automatic security updates by default</h4>
+                        <p>Unlike AL2, AL2023 does NOT install security updates via cloud-init. Use deterministic upgrading features or manage updates explicitly.</p>
+                    </div>
+                </div>
+                <div class="warning-card warning-card-critical">
+                    <div class="warning-icon">🔴</div>
+                    <div class="warning-content">
+                        <h4>AL2 End of Life: June 30, 2026</h4>
+                        <p>Amazon Linux 2 will stop receiving security patches after this date. Begin migration planning now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IaC Section -->
+    <section class="section section-alt" id="iac">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Infrastructure as Code</span>
+                <h2 class="section-title">Deploy with IaC Templates</h2>
+                <p class="section-desc">Production-ready Terraform and CloudFormation templates for Amazon Linux 2023.</p>
+            </div>
+
+            <div class="iac-tabs">
+                <button class="iac-tab active" data-tab="terraform">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    Terraform
+                </button>
+                <button class="iac-tab" data-tab="cloudformation">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+                    CloudFormation
+                </button>
+                <button class="iac-tab" data-tab="dockerfile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                    Dockerfile
+                </button>
+            </div>
+
+            <div class="iac-content">
+                <div class="iac-panel active" id="tab-terraform">
+                    <div class="code-block code-block-large">
+                        <div class="code-header">
+                            <span class="code-lang">main.tf</span>
+                            <button class="copy-btn" data-code="terraform-main">Copy</button>
+                        </div>
+                        <pre><code id="terraform-code"><span class="code-comment"># ─── Amazon Linux 2023 EC2 Instance ───────────────────────</span>
+<span class="code-comment"># Terraform configuration for launching AL2023 with</span>
+<span class="code-comment"># dynamic AMI resolution via SSM Parameter Store</span>
+
+<span class="code-keyword">terraform</span> {
+  <span class="code-keyword">required_providers</span> {
+    <span class="code-attr">aws</span> = {
+      <span class="code-attr">source</span>  = <span class="code-string">"hashicorp/aws"</span>
+      <span class="code-attr">version</span> = <span class="code-string">"~> 5.0"</span>
+    }
+  }
+}
+
+<span class="code-keyword">provider</span> <span class="code-string">"aws"</span> {
+  <span class="code-attr">region</span> = <span class="code-keyword">var</span>.aws_region
+}
+
+<span class="code-keyword">variable</span> <span class="code-string">"aws_region"</span> {
+  <span class="code-attr">default</span> = <span class="code-string">"us-east-2"</span>
+}
+
+<span class="code-keyword">variable</span> <span class="code-string">"instance_type"</span> {
+  <span class="code-attr">default</span> = <span class="code-string">"t3.micro"</span>
+}
+
+<span class="code-keyword">variable</span> <span class="code-string">"key_name"</span> {
+  <span class="code-attr">description</span> = <span class="code-string">"SSH key pair name"</span>
+  <span class="code-attr">type</span>        = <span class="code-keyword">string</span>
+}
+
+<span class="code-comment"># Dynamic AMI lookup via SSM</span>
+<span class="code-keyword">data</span> <span class="code-string">"aws_ssm_parameter"</span> <span class="code-string">"al2023_ami"</span> {
+  <span class="code-attr">name</span> = <span class="code-string">"/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"</span>
+}
+
+<span class="code-comment"># Security Group</span>
+<span class="code-keyword">resource</span> <span class="code-string">"aws_security_group"</span> <span class="code-string">"al2023_sg"</span> {
+  <span class="code-attr">name_prefix</span> = <span class="code-string">"al2023-"</span>
+  
+  <span class="code-keyword">ingress</span> {
+    <span class="code-attr">from_port</span>   = <span class="code-number">22</span>
+    <span class="code-attr">to_port</span>     = <span class="code-number">22</span>
+    <span class="code-attr">protocol</span>    = <span class="code-string">"tcp"</span>
+    <span class="code-attr">cidr_blocks</span> = [<span class="code-string">"0.0.0.0/0"</span>]
+  }
+
+  <span class="code-keyword">egress</span> {
+    <span class="code-attr">from_port</span>   = <span class="code-number">0</span>
+    <span class="code-attr">to_port</span>     = <span class="code-number">0</span>
+    <span class="code-attr">protocol</span>    = <span class="code-string">"-1"</span>
+    <span class="code-attr">cidr_blocks</span> = [<span class="code-string">"0.0.0.0/0"</span>]
+  }
+}
+
+<span class="code-comment"># EC2 Instance</span>
+<span class="code-keyword">resource</span> <span class="code-string">"aws_instance"</span> <span class="code-string">"al2023"</span> {
+  <span class="code-attr">ami</span>                    = <span class="code-keyword">data</span>.aws_ssm_parameter.al2023_ami.value
+  <span class="code-attr">instance_type</span>          = <span class="code-keyword">var</span>.instance_type
+  <span class="code-attr">key_name</span>               = <span class="code-keyword">var</span>.key_name
+  <span class="code-attr">vpc_security_group_ids</span> = [aws_security_group.al2023_sg.id]
+
+  <span class="code-keyword">root_block_device</span> {
+    <span class="code-attr">volume_type</span> = <span class="code-string">"gp3"</span>
+    <span class="code-attr">volume_size</span> = <span class="code-number">30</span>
+    <span class="code-attr">encrypted</span>   = <span class="code-keyword">true</span>
+  }
+
+  <span class="code-keyword">tags</span> = {
+    <span class="code-attr">Name</span> = <span class="code-string">"AL2023-Instance"</span>
+    <span class="code-attr">OS</span>   = <span class="code-string">"Amazon Linux 2023"</span>
+  }
+}
+
+<span class="code-keyword">output</span> <span class="code-string">"instance_public_ip"</span> {
+  <span class="code-attr">value</span> = aws_instance.al2023.public_ip
+}
+
+<span class="code-keyword">output</span> <span class="code-string">"ssh_command"</span> {
+  <span class="code-attr">value</span> = <span class="code-string">"ssh ec2-user@${aws_instance.al2023.public_ip}"</span>
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="iac-panel" id="tab-cloudformation">
+                    <div class="code-block code-block-large">
+                        <div class="code-header">
+                            <span class="code-lang">al2023-stack.yaml</span>
+                            <button class="copy-btn" data-code="cloudformation">Copy</button>
+                        </div>
+                        <pre><code><span class="code-keyword">AWSTemplateFormatVersion</span>: <span class="code-string">'2010-09-09'</span>
+<span class="code-keyword">Description</span>: <span class="code-string">'Amazon Linux 2023 EC2 Instance with gp3 EBS'</span>
+
+<span class="code-keyword">Parameters</span>:
+  <span class="code-attr">KeyName</span>:
+    <span class="code-attr">Type</span>: AWS::EC2::KeyPair::KeyName
+    <span class="code-attr">Description</span>: <span class="code-string">SSH key pair for EC2 access</span>
+  <span class="code-attr">InstanceType</span>:
+    <span class="code-attr">Type</span>: String
+    <span class="code-attr">Default</span>: <span class="code-string">t3.micro</span>
+    <span class="code-attr">AllowedValues</span>:
+      - <span class="code-string">t3.micro</span>
+      - <span class="code-string">t3.small</span>
+      - <span class="code-string">t3.medium</span>
+      - <span class="code-string">c6g.medium</span>
+      - <span class="code-string">m6g.medium</span>
+
+<span class="code-keyword">Resources</span>:
+  <span class="code-attr">SecurityGroup</span>:
+    <span class="code-attr">Type</span>: AWS::EC2::SecurityGroup
+    <span class="code-attr">Properties</span>:
+      <span class="code-attr">GroupDescription</span>: <span class="code-string">AL2023 Security Group</span>
+      <span class="code-attr">SecurityGroupIngress</span>:
+        - <span class="code-attr">IpProtocol</span>: tcp
+          <span class="code-attr">FromPort</span>: <span class="code-number">22</span>
+          <span class="code-attr">ToPort</span>: <span class="code-number">22</span>
+          <span class="code-attr">CidrIp</span>: <span class="code-string">0.0.0.0/0</span>
+
+  <span class="code-attr">EC2Instance</span>:
+    <span class="code-attr">Type</span>: AWS::EC2::Instance
+    <span class="code-attr">Properties</span>:
+      <span class="code-attr">ImageId</span>: <span class="code-string">'{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}'</span>
+      <span class="code-attr">InstanceType</span>: !Ref InstanceType
+      <span class="code-attr">KeyName</span>: !Ref KeyName
+      <span class="code-attr">SecurityGroupIds</span>:
+        - !Ref SecurityGroup
+      <span class="code-attr">BlockDeviceMappings</span>:
+        - <span class="code-attr">DeviceName</span>: <span class="code-string">/dev/xvda</span>
+          <span class="code-attr">Ebs</span>:
+            <span class="code-attr">VolumeType</span>: <span class="code-string">gp3</span>
+            <span class="code-attr">VolumeSize</span>: <span class="code-number">30</span>
+            <span class="code-attr">Encrypted</span>: <span class="code-keyword">true</span>
+      <span class="code-attr">Tags</span>:
+        - <span class="code-attr">Key</span>: Name
+          <span class="code-attr">Value</span>: <span class="code-string">AL2023-Instance</span>
+
+<span class="code-keyword">Outputs</span>:
+  <span class="code-attr">PublicIP</span>:
+    <span class="code-attr">Value</span>: !GetAtt EC2Instance.PublicIp
+  <span class="code-attr">SSHCommand</span>:
+    <span class="code-attr">Value</span>: !Sub <span class="code-string">'ssh ec2-user@${EC2Instance.PublicIp}'</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="iac-panel" id="tab-dockerfile">
+                    <div class="code-block code-block-large">
+                        <div class="code-header">
+                            <span class="code-lang">Dockerfile</span>
+                            <button class="copy-btn" data-code="dockerfile">Copy</button>
+                        </div>
+                        <pre><code><span class="code-comment"># ─── Amazon Linux 2023 Container ──────────────────────────</span>
+<span class="code-keyword">FROM</span> public.ecr.aws/amazonlinux/amazonlinux:2023
+
+<span class="code-comment"># Install common packages</span>
+<span class="code-keyword">RUN</span> dnf update -y && \
+    dnf install -y \
+      httpd \
+      python3 \
+      python3-pip \
+      aws-cli-2 \
+      shadow-utils \
+      procps-ng \
+      tar \
+      gzip && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
+
+<span class="code-comment"># Create non-root user</span>
+<span class="code-keyword">RUN</span> useradd -m -s /bin/bash appuser
+
+<span class="code-comment"># Set working directory</span>
+<span class="code-keyword">WORKDIR</span> /app
+
+<span class="code-comment"># Copy application code</span>
+<span class="code-keyword">COPY</span> . .
+
+<span class="code-comment"># Switch to non-root user</span>
+<span class="code-keyword">USER</span> appuser
+
+<span class="code-comment"># Default command</span>
+<span class="code-keyword">CMD</span> [<span class="code-string">"/bin/bash"</span>]
+
+<span class="code-comment"># ─── AL2027 Preview Container (for testing) ──────────────</span>
+<span class="code-comment"># FROM public.ecr.aws/amazonlinux/amazonlinux:2027-minimal</span>
+<span class="code-comment"># RUN dnf install -y python3 && dnf clean all</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts Section -->
+    <section class="section" id="scripts">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Scripts</span>
+                <h2 class="section-title">Operational Scripts</h2>
+                <p class="section-desc">Ready-to-use scripts for managing Amazon Linux instances in production.</p>
+            </div>
+
+            <div class="scripts-grid">
+                <div class="script-card">
+                    <div class="script-header">
+                        <div class="script-icon">📋</div>
+                        <div>
+                            <h3>System Health Check</h3>
+                            <span class="script-filename">health-check.sh</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="health-check">Copy</button>
+                        </div>
+                        <pre><code>#!/bin/bash
+<span class="code-comment"># AL2023 System Health Check Script</span>
+set -euo pipefail
+
+echo "═══════════════════════════════════════════"
+echo "  Amazon Linux System Health Report"
+echo "  $(date '+%Y-%m-%d %H:%M:%S %Z')"
+echo "═══════════════════════════════════════════"
+
+<span class="code-comment"># OS Information</span>
+echo -e "\n📌 OS Information:"
+cat /etc/os-release | grep -E "^(NAME|VERSION|ID)="
+
+<span class="code-comment"># Kernel</span>
+echo -e "\n🔧 Kernel:"
+uname -r
+
+<span class="code-comment"># Uptime & Load</span>
+echo -e "\n⏱️  Uptime & Load:"
+uptime
+
+<span class="code-comment"># Memory</span>
+echo -e "\n💾 Memory Usage:"
+free -h | head -2
+
+<span class="code-comment"># Disk</span>
+echo -e "\n💿 Disk Usage:"
+df -h / | tail -1
+
+<span class="code-comment"># Security Updates Available</span>
+echo -e "\n🔒 Release Update Check:"
+dnf check-release-update 2>/dev/null || echo "  System is up to date."
+
+<span class="code-comment"># Network Interfaces</span>
+echo -e "\n🌐 Network Interfaces:"
+networkctl status 2>/dev/null | head -5 || ip addr show | grep "inet "
+
+<span class="code-comment"># Failed Services</span>
+echo -e "\n❌ Failed Services:"
+systemctl --failed --no-pager 2>/dev/null || echo "  None"
+
+echo -e "\n═══════════════════════════════════════════"</code></pre>
+                    </div>
+                </div>
+
+                <div class="script-card">
+                    <div class="script-header">
+                        <div class="script-icon">🔄</div>
+                        <div>
+                            <h3>Safe Update Script</h3>
+                            <span class="script-filename">safe-update.sh</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="safe-update">Copy</button>
+                        </div>
+                        <pre><code>#!/bin/bash
+<span class="code-comment"># AL2023 Safe Update Script</span>
+<span class="code-comment"># Performs a controlled update with rollback capability</span>
+set -euo pipefail
+
+LOGFILE="/var/log/al2023-update-$(date +%Y%m%d).log"
+
+log() { echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOGFILE"; }
+
+log "Starting AL2023 safe update process..."
+
+<span class="code-comment"># Step 1: Check available updates</span>
+log "Checking for available release updates..."
+UPDATES=$(dnf check-release-update 2>&1) || true
+echo "$UPDATES" | tee -a "$LOGFILE"
+
+if echo "$UPDATES" | grep -q "No release update"; then
+  log "✅ System is already on the latest release."
+  exit 0
+fi
+
+<span class="code-comment"># Step 2: Extract latest version</span>
+LATEST=$(echo "$UPDATES" | grep "Version " | tail -1 | awk '{print $2}' | tr -d ':')
+log "Latest available version: $LATEST"
+
+<span class="code-comment"># Step 3: Dry run</span>
+log "Performing dry-run upgrade to $LATEST..."
+dnf upgrade --releasever="$LATEST" --assumeno 2>&1 | tee -a "$LOGFILE" || true
+
+<span class="code-comment"># Step 4: Prompt for confirmation</span>
+read -p "Proceed with upgrade to $LATEST? (y/N): " CONFIRM
+if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
+  log "❌ Update cancelled by user."
+  exit 1
+fi
+
+<span class="code-comment"># Step 5: Create snapshot marker</span>
+log "Recording pre-update state..."
+rpm -qa --queryformat '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n' \
+  | sort > "/tmp/packages-before-update.txt"
+
+<span class="code-comment"># Step 6: Execute upgrade</span>
+log "Upgrading to $LATEST..."
+dnf upgrade --releasever="$LATEST" -y 2>&1 | tee -a "$LOGFILE"
+
+log "✅ Update complete. Reboot recommended."
+log "Review log at: $LOGFILE"</code></pre>
+                    </div>
+                </div>
+
+                <div class="script-card">
+                    <div class="script-header">
+                        <div class="script-icon">🐳</div>
+                        <div>
+                            <h3>Container Setup</h3>
+                            <span class="script-filename">container-setup.sh</span>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">bash</span>
+                            <button class="copy-btn" data-code="container-setup">Copy</button>
+                        </div>
+                        <pre><code>#!/bin/bash
+<span class="code-comment"># Setup Docker with AL2023 on an EC2 instance</span>
+set -euo pipefail
+
+echo "🐳 Installing Docker on Amazon Linux 2023..."
+
+<span class="code-comment"># Install Docker</span>
+sudo dnf install -y docker
+sudo systemctl enable --now docker
+sudo usermod -aG docker ec2-user
+
+<span class="code-comment"># Login to ECR Public</span>
+aws ecr-public get-login-password --region us-east-1 \
+  | docker login --username AWS --password-stdin public.ecr.aws
+
+<span class="code-comment"># Pull Amazon Linux images</span>
+echo "📦 Pulling Amazon Linux container images..."
+docker pull public.ecr.aws/amazonlinux/amazonlinux:2023
+docker pull public.ecr.aws/amazonlinux/amazonlinux:2027-minimal
+
+<span class="code-comment"># Verify</span>
+echo "✅ Images available:"
+docker images | grep amazonlinux
+
+echo ""
+echo "🎉 Docker setup complete!"
+echo "Run: docker run --rm -it amazonlinux:2023 /bin/bash"</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cheat Sheet Section -->
+    <section class="section section-alt" id="cheatsheet">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Quick Reference</span>
+                <h2 class="section-title">AL2023 Cheat Sheet</h2>
+                <p class="section-desc">Essential commands and information at a glance.</p>
+            </div>
+
+            <div class="cheatsheet-grid">
+                <div class="cheat-card">
+                    <h3>🔑 AMI SSM Aliases</h3>
+                    <div class="cheat-list">
+                        <div class="cheat-item">
+                            <code>al2023-ami-kernel-default-x86_64</code>
+                            <span>Standard x86_64</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>al2023-ami-kernel-default-arm64</code>
+                            <span>Standard ARM64</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>al2023-ami-minimal-kernel-default-x86_64</code>
+                            <span>Minimal x86_64</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>al2023-ami-minimal-kernel-default-arm64</code>
+                            <span>Minimal ARM64</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>📦 Docker Image Tags</h3>
+                    <div class="cheat-list">
+                        <div class="cheat-item">
+                            <code>amazonlinux:2023</code>
+                            <span>Latest stable (recommended)</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>amazonlinux:latest</code>
+                            <span>Same as 2023</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>amazonlinux:2027-minimal</code>
+                            <span>Preview only</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>amazonlinux:2</code>
+                            <span>EOL Jun 2026</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>amazonlinux:2018.03</code>
+                            <span>EOL (deprecated)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>📝 Essential DNF Commands</h3>
+                    <div class="cheat-list">
+                        <div class="cheat-item">
+                            <code>dnf search &lt;pkg&gt;</code>
+                            <span>Search packages</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>dnf install &lt;pkg&gt;</code>
+                            <span>Install package</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>dnf remove &lt;pkg&gt;</code>
+                            <span>Remove package</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>dnf list installed</code>
+                            <span>List installed</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>dnf check-release-update</code>
+                            <span>Check for updates</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>dnf upgrade --releasever=X</code>
+                            <span>Upgrade to version</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>🌐 Networking (systemd-networkd)</h3>
+                    <div class="cheat-list">
+                        <div class="cheat-item">
+                            <code>networkctl</code>
+                            <span>List interfaces</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>networkctl status ens5</code>
+                            <span>Interface details</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>resolvectl</code>
+                            <span>DNS resolver status</span>
+                        </div>
+                        <div class="cheat-item">
+                            <code>/etc/systemd/network/</code>
+                            <span>Custom config dir</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>📅 Lifecycle Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item timeline-past">
+                            <div class="timeline-date">Jan 2024</div>
+                            <div class="timeline-event">AL1 (AMI) EOL ☠️</div>
+                        </div>
+                        <div class="timeline-item timeline-warning">
+                            <div class="timeline-date">Jun 2026</div>
+                            <div class="timeline-event">AL2 EOL ⚠️</div>
+                        </div>
+                        <div class="timeline-item timeline-active">
+                            <div class="timeline-date">2028</div>
+                            <div class="timeline-event">AL2023 LTS End</div>
+                        </div>
+                        <div class="timeline-item timeline-future">
+                            <div class="timeline-date">~2032</div>
+                            <div class="timeline-event">AL2027 LTS End</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cheat-card">
+                    <h3>🔗 Quick Links</h3>
+                    <div class="cheat-list links-list">
+                        <a href="https://alas.aws.amazon.com/alas2023.html" target="_blank" class="quick-link">AL2023 Security Advisories ↗</a>
+                        <a href="https://alas.aws.amazon.com/alas2027.html" target="_blank" class="quick-link">AL2027 Security Advisories ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/kernel-update.html" target="_blank" class="quick-link">Kernel Update Guide ↗</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/compare-with-al2.html" target="_blank" class="quick-link">AL2 vs AL2023 Comparison ↗</a>
+                        <a href="https://github.com/amazonlinux/container-images/issues" target="_blank" class="quick-link">Container Issues (GitHub) ↗</a>
+                        <a href="https://github.com/amazonlinux/amazon-ec2-net-utils" target="_blank" class="quick-link">EC2 Net Utils (GitHub) ↗</a>
+                        <a href="https://gallery.ecr.aws/amazonlinux/" target="_blank" class="quick-link">ECR Public Gallery ↗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Networking Section -->
+    <section class="section" id="networking">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Networking</span>
+                <h2 class="section-title">EC2 Network Utilities</h2>
+                <p class="section-desc">amazon-ec2-net-utils v2.x — systemd-networkd based network management for AL2023+</p>
+            </div>
+
+            <div class="network-info-grid">
+                <div class="network-card">
+                    <h3>What it does</h3>
+                    <ul class="feature-list">
+                        <li>Per-interface policy routing for VPC source/dest restrictions</li>
+                        <li>Configuration of secondary IPv4 addresses</li>
+                        <li>ENI hotplug configuration</li>
+                        <li>Routing for delegated prefixes</li>
+                        <li>Generated configs stored in <code>/run/</code> (ephemeral)</li>
+                    </ul>
+                </div>
+                <div class="network-card">
+                    <h3>Verification Commands</h3>
+                    <div class="code-block">
+                        <pre><code><span class="code-comment"># Verify networkd is running</span>
+<span class="code-prompt">$</span> networkctl
+<span class="code-comment"># Should show interfaces as "routable" and "configured"</span>
+
+<span class="code-comment"># Check interface config source</span>
+<span class="code-prompt">$</span> networkctl status ens5
+<span class="code-comment"># Look for: /run/systemd/network/70-ens5.network</span>
+
+<span class="code-comment"># Check DNS resolution</span>
+<span class="code-prompt">$</span> resolvectl</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        Amazon Linux Hub
+                    </div>
+                    <p>Comprehensive reference for Amazon Linux distributions.</p>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>Documentation</h4>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/what-is-amazon-linux.html" target="_blank">AL2023 User Guide</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2027/ug/what-is-amazon-linux-2027.html" target="_blank">AL2027 User Guide</a>
+                        <a href="https://docs.aws.amazon.com/linux/al2023/ug/kernel-update.html" target="_blank">Kernel Updates</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Community</h4>
+                        <a href="https://github.com/amazonlinux/container-images/issues" target="_blank">GitHub Issues</a>
+                        <a href="https://forums.aws.amazon.com/forum.jspa?forumID=228" target="_blank">AWS Forums</a>
+                        <a href="https://github.com/amazonlinux/amazon-ec2-net-utils" target="_blank">EC2 Net Utils</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Security</h4>
+                        <a href="https://alas.aws.amazon.com/alas2023.html" target="_blank">AL2023 Advisories</a>
+                        <a href="https://alas.aws.amazon.com/alas2027.html" target="_blank">AL2027 Advisories</a>
+                        <a href="https://alas.aws.amazon.com/alas2.html" target="_blank">AL2 Advisories</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Built with ❤️ as a community reference. Not affiliated with AWS.</p>
+                <p>Data sourced from official AWS documentation • Last updated October 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
