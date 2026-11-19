@@ -1,4 +1,38 @@
 
+<!-- identity-block -->
+<div align="center">
+
+# amazon-aws-kernellinux-ami
+
+<sub>Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.</sub>
+
+</div>
+
+## At a glance
+
+| Field | Detail |
+| --- | --- |
+| Repository | amazon-aws-kernellinux-ami |
+| Primary language | HTML |
+| Topics | amazon-linux, ami, aws, cloud, ec2, html, linux |
+| License | MIT |
+| Branch | master |
+| Maintainer | [@devarent](https://github.com/devarent) |
+
+## Overview
+
+amazon-aws-kernellinux-ami is a hands-on repository focused on: Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.. Primary language: HTML. Topics: amazon-linux, ami, aws, cloud, ec2, html, linux. The README below documents the project; use the table above for a quick overview.
+
+### Global references
+
+<div align="center">
+
+🇮🇸 Iceland &middot; 🇳🇿 New Zealand &middot; 🇨🇭 Switzerland &middot; 🇸🇮 Slovenia &middot; 🇮🇪 Ireland &middot; 🇦🇹 Austria &middot; 🇵🇹 Portugal &middot; 🇸🇬 Singapore &middot; 🇫🇮 Finland
+
+</div>
+
+---
+
 <!-- dbx-style-kit -->
 <div align="center">
 
