@@ -12,7 +12,7 @@
 <!-- identity-block -->
 <div align="center">
 
-# amazon-aws-kernellinux-ami
+# amazon-linux-ami-kernel
 
 <sub>Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.</sub>
 
@@ -22,7 +22,7 @@
 
 | Field | Detail |
 | --- | --- |
-| Repository | amazon-aws-kernellinux-ami |
+| Repository | amazon-linux-ami-kernel |
 | Primary language | HTML |
 | Topics | amazon-linux, ami, aws, cloud, ec2, html, linux |
 | License | MIT |
@@ -31,7 +31,7 @@
 
 ## Overview
 
-amazon-aws-kernellinux-ami is a hands-on repository focused on: Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.. Primary language: HTML. Topics: amazon-linux, ami, aws, cloud, ec2, html, linux. The README below documents the project; use the table above for a quick overview.
+amazon-linux-ami-kernel is a hands-on repository focused on: Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.. Primary language: HTML. Topics: amazon-linux, ami, aws, cloud, ec2, html, linux. The README below documents the project; use the table above for a quick overview.
 
 ### Global references
 
@@ -46,7 +46,7 @@ amazon-aws-kernellinux-ami is a hands-on repository focused on: Eksplorasi Amazo
 <!-- dbx-style-kit -->
 <div align="center">
 
-<img src="https://img.shields.io/badge/amazon-aws-kernellinux-ami-1f6feb?style=for-the-badge" alt="amazon-aws-kernellinux-ami" />
+<img src="https://img.shields.io/badge/amazon-linux-ami-kernel-1f6feb?style=for-the-badge" alt="amazon-linux-ami-kernel" />
 <img src="https://img.shields.io/badge/LANG%20HTML-3178c6?style=for-the-badge" alt="LANG HTML" />
 <img src="https://img.shields.io/badge/STARS%200-eab308?style=for-the-badge" alt="STARS 0" />
 <img src="https://img.shields.io/badge/LICENSE%20MIT-22c55e?style=for-the-badge" alt="LICENSE MIT" />
@@ -69,7 +69,7 @@ amazon-aws-kernellinux-ami is a hands-on repository focused on: Eksplorasi Amazo
 
 🐧
 
-# amazon-aws-kernellinux-ami
+# amazon-linux-ami-kernel
 
 **Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2.**
 
@@ -90,7 +90,7 @@ Eksplorasi Amazon Linux AMI, kernel, dan konfigurasi EC2. Repositori ini merupak
 ## Project Structure
 
 ```text
-amazon-aws-kernellinux-ami/
+amazon-linux-ami-kernel/
 |-- docs/
 |-- iac/
 |-- playwright-report/
@@ -108,8 +108,8 @@ amazon-aws-kernellinux-ami/
 ## Getting Started
 
 `ash
-git clone https://github.com/devarent/amazon-aws-kernellinux-ami.git
-cd amazon-aws-kernellinux-ami
+git clone https://github.com/devarent/amazon-linux-ami-kernel.git
+cd amazon-linux-ami-kernel
 `
 
 Ikuti petunjuk pada file dokumentasi di dalam repository untuk menyiapkan lingkungan pengembangan.
@@ -139,7 +139,7 @@ Proyek ini dilisensikan di bawah MIT License. Lihat file [LICENSE](LICENSE).
 
 ## Project Governance
 
-[![CI](https://github.com/devarent/amazon-aws-kernellinux-ami/actions/workflows/ci.yml/badge.svg)](https://github.com/devarent/amazon-aws-kernellinux-ami/actions/workflows/ci.yml)
+[![CI](https://github.com/devarent/amazon-linux-ami-kernel/actions/workflows/ci.yml/badge.svg)](https://github.com/devarent/amazon-linux-ami-kernel/actions/workflows/ci.yml)
 
 [Contributing](CONTRIBUTING.md) | [Security Policy](SECURITY.md) | [Code of Conduct](CODE_OF_CONDUCT.md)
 
